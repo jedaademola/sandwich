@@ -11,7 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import wawa.hackerearth.sandwich.dao.OrderRepository;
+import wawa.hackerearth.sandwich.dao.ProfileRepository;
 import wawa.hackerearth.sandwich.model.entity.OrderItems;
+import wawa.hackerearth.sandwich.model.entity.Profile;
 import wawa.hackerearth.sandwich.model.vo.data.SandWishData;
 
 @Service
@@ -19,6 +21,13 @@ public class ProfileService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProfileService.class);
 	 @Autowired
 	 private OrderRepository orderRepository;
+	 
+	 @Autowired
+	 private ProfileRepository profileRepository;
+	 
+	 public Profile displayProfile (String customerId) {
+		 return profileRepository.displayProfile(customerId);
+	 }
 	 
 	 public OrderItems placeOrder(OrderItems orderItems) {
 		 

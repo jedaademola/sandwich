@@ -19,7 +19,7 @@ import wawa.hackerearth.sandwich.service.CustomerService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/v1/profile")
+@RequestMapping(value = "/api/v1")
 @Api("Endpoint for CustomerController")
 public class CustomerController {
 	 private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);

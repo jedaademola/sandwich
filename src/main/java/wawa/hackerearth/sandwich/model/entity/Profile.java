@@ -17,8 +17,12 @@ public class Profile implements Serializable {
     private String customerId;
     private String firstName;
     private String lastName;
-    private FavouritesGroups favouritesGroups;
-    private PreviousOrder previousOrders;
+    
+    @Transient
+    private transient FavouritesGroups favouritesGroups;
+    
+    @Transient
+    private transient PreviousOrder previousOrders;
 
     public String getCustomerId() {
         return customerId;

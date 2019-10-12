@@ -8,6 +8,7 @@ import wawa.hackerearth.sandwich.model.entity.Customer;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,6 +25,8 @@ public class OrderItems implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long orderId;
+    private Date orderDate;
     private  String displayName;
     private String thumbnailUrl;
     private  String imageUrl;
@@ -35,7 +38,23 @@ public class OrderItems implements Serializable {
     @OneToMany(mappedBy="orderItems")
     private List<Condiment> condiments;
     
-    public OrderItems () {
+    public Long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public OrderItems () {
     	
     }
     
