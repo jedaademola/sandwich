@@ -12,14 +12,14 @@ public class ChoiceItemsArray {
 	 private String id;
 	 private OptionsItemPricing optionsItemPricing;
 	 private int variantId;
-	 private CalorieObj calorieObj;
+	// private CalorieObj calorieObj;
 	 private String name;
      private BigDecimal unitprice;
      private Boolean isMandatory;
      private Boolean isSelected;
      private String imageUrl;
      private String optionAddToCartUrl;
-     List<ChoiceItemsArray> choiceItemsArray;
+    // List<ChoiceItemsArray> choiceItemsArray;
 	
 	public String getId() {
 		return id;
@@ -39,12 +39,11 @@ public class ChoiceItemsArray {
 	public void setVariantId(int variantId) {
 		this.variantId = variantId;
 	}
-	public CalorieObj getCalorieObj() {
-		return calorieObj;
-	}
-	public void setCalorieObj(CalorieObj calorieObj) {
-		this.calorieObj = calorieObj;
-	}
+
+	/*
+	 * public CalorieObj getCalorieObj() { return calorieObj; } public void
+	 * setCalorieObj(CalorieObj calorieObj) { this.calorieObj = calorieObj; }
+	 */
 	public String getName() {
 		return name;
 	}
@@ -81,11 +80,10 @@ public class ChoiceItemsArray {
 	public void setOptionAddToCartUrl(String optionAddToCartUrl) {
 		this.optionAddToCartUrl = optionAddToCartUrl;
 	}
-	public List<ChoiceItemsArray> getChoiceItemsArray() {
-		return choiceItemsArray;
-	}
-	public void setChoiceItemsArray(List<ChoiceItemsArray> choiceItemsArray) {
-		this.choiceItemsArray = choiceItemsArray;
-	}
+	/*
+	 * public List<ChoiceItemsArray> getChoiceItemsArray() { return
+	 * choiceItemsArray; } public void setChoiceItemsArray(List<ChoiceItemsArray>
+	 * choiceItemsArray) { this.choiceItemsArray = choiceItemsArray; }
+	 */
      
 }

@@ -4,15 +4,27 @@ import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+import wawa.hackerearth.sandwich.dao.OrderRepository;
+import wawa.hackerearth.sandwich.model.entity.OrderItems;
 import wawa.hackerearth.sandwich.model.vo.data.SandWishData;
 
 @Service
 public class ProfileService {
-	 private static final Logger LOGGER = LoggerFactory.getLogger(ProfileService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProfileService.class);
+	 @Autowired
+	 private OrderRepository orderRepository;
+	 
+	 public OrderItems placeOrder(OrderItems orderItems) {
+		 
+		 return orderRepository.save(orderItems);
+	 }
+	 
 	public SandWishData sandWishData() {
 		ObjectMapper mapper = new ObjectMapper();
 		SandWishData sandWishData = null;

@@ -1,5 +1,6 @@
-package wawa.hackerearth.sandwich.model.vo;
+package wawa.hackerearth.sandwich.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -9,19 +10,35 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "OrderItems")
 public class OrderItems implements Serializable {
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private  String displayName;
     private String thumbnailUrl;
     private  String imageUrl;
     private BigDecimal price;
-    private List<Condiment> condiments;
+   
     private Boolean favorite;
     private Customer customer;
 
+    @OneToMany(mappedBy="orderItems")
+    private List<Condiment> condiments;
+    
+    public OrderItems () {
+    	
+    }
+    
     public Customer getCustomer() {
 		return customer;
 	}
@@ -34,6 +51,7 @@ public class OrderItems implements Serializable {
         return id;
     }
 
+	@JsonIgnore
     public void setId(Long id) {
         this.id = id;
     }
