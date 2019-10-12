@@ -23,14 +23,11 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     public Customer getCustomer(String customerId) {
-        // public List<CustomerRequest> getCustomers() {
         Customer customer = new Customer();
-        List<Customer> list = getCustomers();
-
+        
         try {
-            customer = list.stream( )
-                    .filter( c -> c.getCustomerId().equalsIgnoreCase(customerId))
-                    .findFirst().get();
+            customer = customerRepository.getCustomer(customerId);
+                   
         } catch (Exception e) {
 
             String msg = "Error while getting Data in CustomerService.getCustomer";
@@ -40,7 +37,6 @@ public class CustomerService {
     }
 
     public List<Customer> getCustomers() {
-       // public List<CustomerRequest> getCustomers() {
         List<Customer> list = new ArrayList<>();
         try {
             list = customerRepository.findAll();

@@ -12,6 +12,6 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     //Customer saveCustomer(Customer customer);
     //List<Customer> getCustomers();
-    //@Query(value = "SELECT * FROM Customer WHERE customerId = ?1", nativeQuery = true)
-    //Customer getCustomer(String customerId);
+    @Query(value = "SELECT * FROM Customer WHERE customer_id = ?1", nativeQuery = true)
+    Customer getCustomer(String customerId);
 }

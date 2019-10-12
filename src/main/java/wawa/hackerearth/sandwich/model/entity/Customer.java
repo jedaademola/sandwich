@@ -13,6 +13,9 @@ public class Customer implements Serializable {
     private String customerId;
     private String firstName;
     private String lastName;
+    
+    private Long paymentMode;
+    private Long deliveryMode;
 
     public  Customer (){
 
@@ -40,4 +43,23 @@ public class Customer implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getPaymentMode() {
+		return paymentMode;
+	}
+	public void setPaymentMode(Long paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+	public Long getDeliveryMode() {
+		return deliveryMode;
+	}
+	public void setDeliveryMode(Long deliveryMode) {
+		this.deliveryMode = deliveryMode;
+	}
+    
 }
