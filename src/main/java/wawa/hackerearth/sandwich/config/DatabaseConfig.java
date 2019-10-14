@@ -40,7 +40,6 @@ public class DatabaseConfig {
         jdbcConfig.setJdbcUrl(datasourceUrl);
         jdbcConfig.setUsername(dbUsername);
         jdbcConfig.setPassword(dbPassword);
-        // final HikariDataSource dataSource = new HikariDataSource();
 
         jdbcConfig.setMaximumPoolSize(maximumPoolSize);
         jdbcConfig.setMinimumIdle(minimumIdle);

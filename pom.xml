@@ -10,7 +10,7 @@
     </parent>
     <groupId>wawa.hackerearth</groupId>
     <artifactId>sandwich</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>sandwich</name>
     <description>Wawa HCL Hackathon 2019 :SANDWICH ORDER</description>
@@ -48,12 +48,9 @@
             <version>2.3.4</version>
         </dependency>
         <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc4</artifactId>
-            <version>4.0</version>
-            <scope>runtime</scope>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

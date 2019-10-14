@@ -8,8 +8,8 @@ import wawa.hackerearth.sandwich.model.entity.Profile;
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
-	@Query(value = "SELECT * FROM  Profile p, Customer c,"
-			+ "OrderItems o where  p.customer_id = c.customer_id"
-			+ "AND c.customer_id = o.customer_id WHERE customer_id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM   Customer c,"
+			+ " order_items o WHERE "
+			+ " c.id = o.customer and  c.customer_id = ?1", nativeQuery = true)
 	Profile displayProfile (String customerId);
 }

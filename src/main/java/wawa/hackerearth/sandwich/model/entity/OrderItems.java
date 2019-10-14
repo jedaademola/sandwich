@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,6 +35,9 @@ public class OrderItems implements Serializable {
     private BigDecimal price;
    
     private Boolean favorite;
+    
+    @ManyToOne
+    @JoinColumn(name="customer", nullable=false)
     private Customer customer;
 
     @OneToMany(mappedBy="orderItems")

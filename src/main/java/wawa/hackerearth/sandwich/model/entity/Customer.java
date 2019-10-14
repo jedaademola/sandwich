@@ -3,6 +3,7 @@ package wawa.hackerearth.sandwich.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 @Entity
 @Table(name = "Customer")
 public class Customer implements Serializable {
@@ -16,11 +17,23 @@ public class Customer implements Serializable {
     
     private Long paymentMode;
     private Long deliveryMode;
+    
+    @OneToMany(mappedBy="customer")
+    private List<OrderItems>  orderItems;
 
     public  Customer (){
 
     }
-    public String getCustomerId() {
+    
+    public List<OrderItems> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderItems> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+	public String getCustomerId() {
         return customerId;
     }
 
