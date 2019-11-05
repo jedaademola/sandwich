@@ -104,9 +104,10 @@ public class RestService {
                     responseTemp = invokeClient(response.getNext(), HttpMethod.GET, httpRequest, String.class);
                     response = mapper.readValue(responseTemp.getBody().toString(), People.class);
 
-                    resultLists.addAll(response.getResults());
+                    resultLists.addAll(response.getResults().stream()
+                            .filter(r -> r.getHeight() > 172)
+                            .collect(Collectors.toList()));
                 }
-                //response = responseTemp.getBody().toString();
             } else {
                 //Handle other Response Codes
                 //response = handleOtherResponseCodes(responseTemp);

@@ -1,4 +1,4 @@
-package wawa.hackerearth.sandwich;
+package wawa.hackerearth.sandwich.util;
 
 import java.util.*;
 

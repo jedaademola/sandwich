@@ -84,4 +84,60 @@ public class LinkedList {
             next = null;
         }
     }
+
+
+    /* * If singly LinkedList contains Cycle then following would be true * 1) slow and fast will point to same node i.e. they meet * On the other hand if fast will point to null or next node of * fast will point to null then LinkedList does not contains cycle. */
+    public boolean isCyclic() {
+        Node fast = head;
+        Node slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            //if fast and slow pointers are meeting then LinkedList is cyclic
+            if (fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Java method to reverse a linked list without recursion
+     */
+    public void reverse() {
+        Node pointer = head;
+        Node previous = null, current = null;
+
+        while (pointer != null) {
+            current = pointer;
+            pointer = pointer.next;
+
+            // reverse the link
+            current.next = previous;
+            previous = current;
+            head = current;
+        }
+
+    }
+
+    public void findMiddleElement() {
+        Node current = head;
+        int length = 0;
+        Node middle = head;
+
+        while (current.next != null) {
+            length++;
+            if (length % 2 == 0) {
+                middle = middle.next;
+            }
+            current = current.next;
+        }
+
+        if (length % 2 == 1) {
+            middle = middle.next;
+        }
+
+        System.out.println("length of LinkedList: " + length);
+        System.out.println("middle element of LinkedList : " + middle);
+    }
 }
