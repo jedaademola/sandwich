@@ -77,7 +77,11 @@ public class RestService {
         return this.restTemplateFactory.restTemplate().exchange(url, method, httpRequest, object);
     }
 
-
+    private List<Result> getResult(List<Result> resultLists) {
+        return resultLists.stream()
+                .filter(r -> Integer.parseInt(r.getHeight()) > 172)
+                .collect(Collectors.toList());
+    }
     public List<Result> peopleList() {
 
         HttpEntity<?> httpRequest = new HttpEntity<>(null, this.httpHeaders);
@@ -95,18 +99,20 @@ public class RestService {
                 ObjectMapper mapper = new ObjectMapper();
                 response = mapper.readValue(responseTemp.getBody().toString(), People.class);
 
-                resultLists.addAll(
+               /* resultLists.addAll(
                         response.getResults().stream()
                                 .filter(r -> r.getHeight() > 172)
-                                .collect(Collectors.toList()));
+                                .collect(Collectors.toList()));*/
+                resultLists.addAll(getResult(response.getResults()));
 
                 while (null != response.getNext()) {
                     responseTemp = invokeClient(response.getNext(), HttpMethod.GET, httpRequest, String.class);
                     response = mapper.readValue(responseTemp.getBody().toString(), People.class);
 
-                    resultLists.addAll(response.getResults().stream()
+                   /* resultLists.addAll(response.getResults().stream()
                             .filter(r -> r.getHeight() > 172)
-                            .collect(Collectors.toList()));
+                            .collect(Collectors.toList()));*/
+                    resultLists.addAll(getResult(response.getResults()));
                 }
             } else {
                 //Handle other Response Codes

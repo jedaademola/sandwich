@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class Result {
 
     private String name;
-    private int height;
+    private String height;
 
     public String getName() {
         return name;
@@ -18,11 +18,11 @@ public class Result {
         this.name = name;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 }
