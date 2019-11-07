@@ -3,10 +3,13 @@ package wawa.hackerearth.sandwich.controller;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import wawa.hackerearth.sandwich.dao.mongoDbDao.UserDAL;
 import wawa.hackerearth.sandwich.dao.mongoDbDao.UserRepository;
 import wawa.hackerearth.sandwich.model.mongoDB.User;
+import wawa.hackerearth.sandwich.model.vo.UserRequest;
+import wawa.hackerearth.sandwich.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +25,23 @@ public class UserController {
 
     private final UserDAL userDAL;
 
+    @Autowired
+    private UserService userService;
+
     public UserController(UserRepository userRepository, UserDAL userDAL) {
         this.userRepository = userRepository;
         this.userDAL = userDAL;
+    }
+
+    @GetMapping("/users")
+    public List<wawa.hackerearth.sandwich.model.entity.User> getUsers() {
+        return userService.getUsers();
+    }
+
+    @PostMapping("/users")
+    public void addUser(@RequestBody UserRequest user) {
+
+        userService.save(user);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
