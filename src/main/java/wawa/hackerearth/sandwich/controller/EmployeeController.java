@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wawa.hackerearth.sandwich.exception.BadRequestException;
 import wawa.hackerearth.sandwich.model.entity.Employee;
-import wawa.hackerearth.sandwich.model.vo.UserRequest;
 import wawa.hackerearth.sandwich.service.EmployeeService;
 
 import java.util.Optional;
