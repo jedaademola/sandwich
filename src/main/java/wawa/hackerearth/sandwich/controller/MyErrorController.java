@@ -1,5 +1,6 @@
 package wawa.hackerearth.sandwich.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class MyErrorController implements ErrorController {
+@Api("Endpoint for MyErrorController")
+public class MyErrorController {//implements ErrorController {
 
    /* @RequestMapping("/error")
     public String handleError() {
@@ -17,7 +19,7 @@ public class MyErrorController implements ErrorController {
         return "error";
     }*/
 
-    @RequestMapping("/error")
+  /*  @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
@@ -36,5 +38,5 @@ public class MyErrorController implements ErrorController {
     @Override
     public String getErrorPath() {
         return "/error";
-    }
+    }*/
 }

@@ -19,7 +19,7 @@ import wawa.hackerearth.sandwich.service.CustomerService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/api/v1/customer")
 @Api("Endpoint for CustomerController")
 public class CustomerController {
 	 private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
@@ -27,7 +27,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping(path = "/customers")
+    @GetMapping()
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
     }
@@ -36,7 +36,8 @@ public class CustomerController {
     public Customer getCustomer(@PathVariable("customerId") String customerId) {
         return customerService.getCustomer(customerId);
     }
-    @PostMapping(path =  "/customer")
+
+    @PostMapping()
     public ResponseEntity<?>  saveCustomer(@RequestBody CustomerRequest customer) {
         //validations
     	//  if (CollectionUtils.(customer.getCustomerId()))

@@ -50,9 +50,9 @@ public class RepetitionsInString {
         }
 
         // Iterate through HashMap to print all duplicate characters of String
-        Set<Map.Entry<Character, Integer>> entrySet = charMap.entrySet();
+        //Set<Map.Entry<Character, Integer>> entrySet = charMap.entrySet();
         System.out.printf("List of duplicate characters in String '%s' %n", word);
-        for (Map.Entry<Character, Integer> entry : entrySet) {
+        for (Map.Entry<Character, Integer> entry : charMap.entrySet()) {
             // if (entry.getValue() > 1) {
             System.out.printf("%s : %d %n", entry.getKey(), entry.getValue());
             //}

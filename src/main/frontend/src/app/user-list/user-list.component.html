@@ -1,11 +1,16 @@
 <div class="card my-5">
   <div class="card-body">
-    <table class="table table-bordered table-striped">
+    <div *ngIf="errorMessage" class="formErrorMessage">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="formSuccessMessage">{{ successMessage }}</div>
+    <!-- Table below-->
+    <table [dtOptions]="dtOptions" class="table table-bordered table-striped" datatable>
       <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
@@ -13,8 +18,104 @@
         <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
         <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+        <td>
+          <button (click)="deleteUser(user.id)" class='btn btn-primary'><i class="fa fa-futboll-0">Delete</i></button>
+
+        </td>
+        <td>
+          <button (click)="displayUserInfo(user.id)" class='btn btn-info'>Update</button>
+
+        </td>
       </tr>
       </tbody>
     </table>
   </div>
 </div>
+
+<div *ngIf="currentUser" class="card my-5">
+  <div class="card-body">
+    <form #userUpdateForm="ngForm" (ngSubmit)="onUpdateUser(userUpdateForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input #name="ngModel" [(ngModel)]="currentUser.name"
+               class="form-control" id="name" name="name" placeholder="Enter your name"
+               required type="text">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input #email="ngModel" [(ngModel)]="currentUser.email"
+               class="form-control" id="email" name="email" placeholder="Enter your email address"
+               required type="text">
+        <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+      </div>
+      <button [disabled]="!userUpdateForm.form.valid" class="btn btn-info" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<!--<div>
+  TEST:: {{ currentUser.name }}
+  TEST2::  {{ currentUser.email }}
+</div>-->
+<div class="modal" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <form #userUpdateForm="ngForm" (ngSubmit)="onUpdateUser(userUpdateForm)">-->
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <!-- <h4 class="modal-title" style="text-align: center">Update User</h4>-->
+
+      </div>
+      <div class="modal-body">
+
+        Citrix
+        --------------
+        Palindrome String
+        Second largest number
+        Merge Intervals
+        Duplicate Numbers
+        Shuffle deck of cards
+        Define certain data structures and their performance profiles.
+        Design an RESTful API?
+        Merge Linked Lists?
+        Some queries related to debugging, interrupt, github, TFS?
+        TCP?
+        <!--<div [hidden]="isupdated">
+        <div class="card-body">
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input #name="ngModel" [(ngModel)]="currentUser.name"
+                     class="form-control" id="name" name="name" placeholder="Enter your name"
+                     required type="text">
+            </div>
+            <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input #email="ngModel" [(ngModel)]="currentUser.email"
+                     class="form-control" id="email" name="email" placeholder="Enter your email address"
+                     required type="text">
+              <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+
+              <div [hidden]="!isupdated">
+                <h4>User Detail Updated!</h4>
+              </div>
+            </div>-->
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+
+          <!--<button type="submit" class="btn btn-success" [hidden]="isupdated">Update</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeisUpdate()">Close</button>-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--</form>-->
+</div>
+<!--  </div>
+</div>-->

@@ -13,6 +13,7 @@ import wawa.hackerearth.sandwich.model.vo.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -35,6 +36,18 @@ public class UserService {
             LOGGER.error(msg, e);
         }
         return list;
+    }
+
+    public User getUserById(Long userId) {
+        Optional<User> user = null;
+        try {
+            user = userRepository.findById(userId);
+        } catch (Exception e) {
+
+            String msg = "Error while getting Data in UserService.getUserById";
+            LOGGER.error(msg, e);
+        }
+        return user.get();
     }
 
     public UserResponse save(UserRequest request) {

@@ -38,8 +38,18 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @GetMapping("/users/{id}")
+    public wawa.hackerearth.sandwich.model.entity.User getUserById(@PathVariable("id") Long userId) {
+        return userService.getUserById(userId);
+    }
     @PostMapping("/users")
     public void addUser(@RequestBody UserRequest user) {
+
+        userService.save(user);
+    }
+
+    @PutMapping("/users")
+    public void updateUser(@RequestBody UserRequest user) {
 
         userService.save(user);
     }
