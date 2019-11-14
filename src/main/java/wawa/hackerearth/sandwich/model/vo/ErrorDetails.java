@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Error implements Serializable {
+public class ErrorDetails implements Serializable {
     /**
      *
      */
@@ -16,7 +16,7 @@ public class Error implements Serializable {
     @ApiModelProperty(value = "", required = true)
     private String message;
 
-    public Error(String fieldName, String message) {
+    public ErrorDetails(String fieldName, String message) {
         this.fieldName = fieldName;
         this.message = message;
     }

@@ -12,4 +12,8 @@ public class BadRequestException extends MicroServiceException {
     public BadRequestException(String errorCode, String message) {
         super(errorCode, message);
     }
+
+    public BadRequestException(String message) {
+        super(message);
+    }
 }

@@ -13,14 +13,14 @@ import wawa.hackerearth.sandwich.service.RestService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/api/v1/peoples")
 @Api("Endpoint for PeopleController")
 public class PeopleController {
 
     @Autowired
     private RestService restService;
 
-    @GetMapping(path = "/people")
+    @GetMapping()
     @ApiOperation("Display people")
     public List<Result> peopleList() {
         return restService.peopleList();

@@ -16,8 +16,9 @@ import wawa.hackerearth.sandwich.exception.BadCredentialsException;
 import wawa.hackerearth.sandwich.exception.BadRequestException;
 import wawa.hackerearth.sandwich.exception.ConflictException;
 import wawa.hackerearth.sandwich.exception.NotFoundException;
+import wawa.hackerearth.sandwich.model.vo.ErrorDetails;
 import wawa.hackerearth.sandwich.model.vo.Response;
-import  wawa.hackerearth.sandwich.model.vo.Error;
+
 
 import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
@@ -36,9 +37,9 @@ public class ServiceApiAdvice {
         response.setDescription("Input Validation failed");
         BindingResult result = e.getBindingResult();
         List<FieldError> errorList = result.getFieldErrors();
-        List<Error> errors = new ArrayList<>();
+        List<ErrorDetails> errors = new ArrayList<>();
         for (FieldError fieldError : errorList) {
-            errors.add(new Error(fieldError.getField(), fieldError.getDefaultMessage()));
+            errors.add(new ErrorDetails(fieldError.getField(), fieldError.getDefaultMessage()));
         }
         response.setErrors(errors);
         return response;

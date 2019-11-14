@@ -16,7 +16,7 @@ public class Response {
     private String code;
     @ApiModelProperty(value = "", required = true)
     private String description;
-    private List<wawa.hackerearth.sandwich.model.vo.Error> errors;
+    private List<ErrorDetails> errors;
 
     @JsonIgnore
     private Object data;
@@ -60,14 +60,14 @@ public class Response {
     /**
      * @return the errors
      */
-    public List<Error> getErrors() {
+    public List<ErrorDetails> getErrors() {
         return errors;
     }
 
     /**
      * @param errors the errors to set
      */
-    public void setErrors(List<Error> errors) {
+    public void setErrors(List<ErrorDetails> errors) {
         this.errors = errors;
     }
 
