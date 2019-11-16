@@ -99,19 +99,20 @@ public class CustomerController {
 				.body(new InputStreamResource(bis));
 	}
 
-	@GetMapping(value = "/download/customers.xlsx")
-	public ResponseEntity<InputStreamResource> excelCustomersReport() throws IOException {
-		List<CustomerPdf> customers = customerPdfService.getCustomerPdfs();
+    //<a href="http://localhost:8080/api/customers/download/customers.xlsx">Customers .XLSX</a>
+    @GetMapping(value = "/download/customers.xlsx")
+    public ResponseEntity<InputStreamResource> excelCustomersReport() throws IOException {
+        List<CustomerPdf> customers = customerPdfService.getCustomerPdfs();
 
-		ByteArrayInputStream in = ExcelGenerator.customersToExcel(customers);
-		// return IOUtils.toByteArray(in);
+        ByteArrayInputStream in = ExcelGenerator.customersToExcel(customers);
+        // return IOUtils.toByteArray(in);
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Disposition", "attachment; filename=customers.xlsx");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename=customers.xlsx");
 
-		return ResponseEntity
-				.ok()
-				.headers(headers)
-				.body(new InputStreamResource(in));
-	}
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(new InputStreamResource(in));
+    }
 }
